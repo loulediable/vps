@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+		<!-- BEGIN_HEADER -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="imagetoolbar" content="no" />
+		<meta property="og:title" content="TS3MusicBot Webinterface" />
+		<meta property="og:description" content="A Teamspeak 3 music bot controlled with chat commands for Linux (vServer/RootServer) and Windows. Plays music/radio/youtube/robot voice and more ..." />
+		<meta property="og:image" content="http://www.ts3musicbot.net/images/icon.png" />
+        <title>TS3MusicBot Webinterface</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+		<style type="text/css">
+			@import url('/css/filelist.css');
+			@import url('/css/rss.css');
+			@import url('/css/download-circle.css');
+		</style>
+        <script src="js/jquery.min.js"></script>
+		<script src="js/circle-progress.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/jquery.countdown.js"></script>
+		<script type="text/javascript" src="js/TS3MusicBot.js"></script>
+		<script src="js/jquery.zrssfeed.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+            $(document).ready(function() {
+				var count = 30;
+			  var countdown = setInterval(function(){
+				$("p.countdown").html("Your TS3MusicBot is currently updating. Please wait a moment. You will be redirected in " + count + " seconds.");
+				if (count == 0) {
+				  clearInterval(countdown);
+				  window.open('index.htm', "_self");
+				}
+				count--;
+			  }, 1000);
+            });
+        </script>
+		<!-- END_HEADER -->
+    </head>
+    <body>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.11&appId=332782323451490';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	<!-- BEFORE_CONTENT -->
+	<div id="wrapper">
+			<div id="header">
+                <div id="title">
+                    <h1>TS3MusicBot Webinterface</h1>
+                </div>
+				<div class="fb-like" data-href="https://www.facebook.com/ts3musicbot.net" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+            </div>
+            <div id="main">
+				<div id="leftPanel"></div>
+				<!-- END_BEFORE_CONTENT -->
+                <div id="content">
+					<center>
+						<p class="countdown" style="margin-top: 20px;"></p>
+						<img src="images/updating.gif" style="width: 100px; height: 100px; margin-top: 30px;">
+					</center>
+                </div>
+				<!-- AFTER_CONTENT -->
+				<div id="rightPanel">
+					<div id="footer">
+						<div id="news"></div>
+						<p>&copy; 2012-2018 &middot; <a href="http://ts3musicbot.net">TS3MusicBot.net</a></p>
+					</div>
+				</div>
+            </div>
+        </div>
+		<!-- END_AFTER_CONTENT -->
+    </body>
+</html>

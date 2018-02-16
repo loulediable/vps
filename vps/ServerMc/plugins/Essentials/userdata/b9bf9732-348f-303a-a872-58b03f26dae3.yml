@@ -1,0 +1,21 @@
+lastAccountName: clemdujdp
+timestamps:
+  login: 1513427000570
+  lastteleport: 1513380752852
+  logout: 1513427226666
+ipAddress: 86.199.7.55
+lastlocation:
+  world: survie
+  x: 117.62805834529152
+  y: 14.0
+  z: -812.821346664918
+  yaw: 357.9297
+  pitch: 25.488083
+logoutlocation:
+  world: survie
+  x: 130.40799509308232
+  y: 65.0
+  z: 221.7297001104319
+  yaw: 0.037994385
+  pitch: 61.12321
+godmode: false

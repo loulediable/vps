@@ -1,0 +1,21 @@
+logoutlocation:
+  world: survie
+  x: 144.46250234130173
+  y: 65.0
+  z: 273.69999998807907
+  yaw: -126.74997
+  pitch: 25.649982
+timestamps:
+  logout: 1511809639182
+  login: 1511808506718
+  lastteleport: 1511736051819
+lastAccountName: MsMoGr
+ipAddress: 86.202.174.146
+lastlocation:
+  world: world2
+  x: 78.3854186294953
+  y: 45.0
+  z: 261.30000001192093
+  yaw: 182.74384
+  pitch: 7.235887
+money: '43.5'

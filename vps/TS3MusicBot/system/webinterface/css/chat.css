@@ -1,0 +1,65 @@
+.ts3musicbot-chat-input td:first-child {
+	width: 200px;
+}
+
+
+.ts3musicbot-chat-input td:nth-child(2) {
+	min-width: 215px;
+}
+
+.ts3musicbot-chat-input td:last-child {
+	width: 100px;
+	padding-left: 5px;
+}
+
+.ts3musicbot-chat-input input {
+	font-weight: bold;
+	width: 100%;
+	min-width: 182px;
+}
+
+
+.ts3musicbot-chat-input .customButton {
+    margin-bottom: 0;
+    margin-top: 20px;
+    min-width: 150px;
+    width: 100%;
+}
+
+.ts3musicbot-chat-input .customInput {
+	padding: 7px 0 7px 4px;
+}
+
+.ts3musicbot-chat-input {
+    background-color: #131517;
+    color: #ffffff;
+    margin-left: 0;
+    table-layout: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+    padding-right: 528px;
+}
+
+#ts3musicbot-chat-box {
+    min-height: 415px;
+    overflow: auto;
+    width: 90%;
+    padding: 60px 0 16px 8px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    white-space: normal;
+}
+
+.topNavigationBar {
+    position: fixed;
+    height: 52px;
+}
+

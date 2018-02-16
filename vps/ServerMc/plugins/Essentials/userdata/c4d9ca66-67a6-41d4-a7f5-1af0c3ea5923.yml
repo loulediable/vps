@@ -1,0 +1,34 @@
+lastAccountName: loulediable
+timestamps:
+  login: 1509313663980
+  logout: 1509320497233
+  kits:
+    color: 1508416537347
+    terraforming: 1508420981321
+    tools: 1508416159570
+  lastteleport: 1509314771680
+ipAddress: 127.0.0.1
+logoutlocation:
+  world: world
+  x: 11.924779965290949
+  y: 53.24433986822329
+  z: -12.932029903154412
+  yaw: -312.55225
+  pitch: 38.902756
+afk: false
+money: '196.1'
+homes:
+  end:
+    world: world_the_end
+    x: 13.924044880366985
+    y: 83.92507858210503
+    z: -0.7983833479042806
+    yaw: 92.13828
+    pitch: 27.353962
+lastlocation:
+  world: world
+  x: 44.813416033547
+  y: 59.67434223586001
+  z: -949.7437277040685
+  yaw: -200.38165
+  pitch: 9.5406275

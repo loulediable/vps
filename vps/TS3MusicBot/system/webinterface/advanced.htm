@@ -1,0 +1,538 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+		<!-- BEGIN_HEADER -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="imagetoolbar" content="no" />
+		<meta property="og:title" content="TS3MusicBot Webinterface" />
+		<meta property="og:description" content="A Teamspeak 3 music bot controlled with chat commands for Linux (vServer/RootServer) and Windows. Plays music/radio/youtube/robot voice and more ..." />
+		<meta property="og:image" content="http://www.ts3musicbot.net/images/logo.gif" />
+        <title>TS3MusicBot Webinterface</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+		<style type="text/css">
+			@import url('/css/filelist.css');
+			@import url('/css/rss.css');
+			@import url('/css/advanced.css');
+			@import url('/css/download-circle.css');
+		</style>
+        <script src="js/jquery.min.js"></script>
+		<script src="js/circle-progress.min.js"></script>
+		
+		<script src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/jquery.countdown.js"></script>
+		<script type="text/javascript" src="js/TS3MusicBot.js"></script>	
+		<script src="js/jquery.zrssfeed.min.js" type="text/javascript"></script>
+		<!-- END_HEADER -->
+    </head>
+    <body>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.11&appId=332782323451490';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	<!-- BEFORE_CONTENT -->
+	<div id="wrapper">
+			<div id="header">
+                <div id="title">
+                    <h1>TS3MusicBot Webinterface</h1>
+                </div>
+				<div class="fb-like" data-href="https://www.facebook.com/ts3musicbot.net" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+			</div>
+            <div id="main">
+				<div id="leftPanel">
+					<a href="index.htm"><div class="menuEntry"><span><img src="images/icons/music.png" /></span><div tkey="MENU_MUSIC"></div></div></a>
+					<a href="radio.htm"><div class="menuEntry"><span><img src="images/icons/radio.png" /></span><div tkey="MENU_RADIO"></div></div></a>
+					<a href="playlist.htm"><div class="menuEntry"><span><img src="images/icons/playlist.png" /></span><div tkey="MENU_PLAYLIST"></div></div></a>
+					<a href="youtube.htm"><div class="menuEntry"><span><img src="images/icons/youtube.png" /></span><div tkey="MENU_YOUTUBE"></div></div></a>
+					<a href="queue.htm"><div class="menuEntry"><span><img src="images/icons/queue.png" /></span><div tkey="MENU_QUEUE"></div></div></a>
+					<a href="history.htm"><div class="menuEntry"><span><img src="images/icons/history.png" /></span><div tkey="MENU_HISTORY"></div></div></a>
+					<a href="channelswitch.htm"><div class="menuEntry"><span><img src="images/icons/channelswitch.png" /></span><div tkey="MENU_CHANNEL_SWITCH"></div></div></a>
+					<a href="commandlist.htm"><div class="menuEntry"><span><img src="images/icons/commandlist.png" /></span><div tkey="MENU_COMMANDLIST"></div></div></a>
+					<a href="settings.htm"><div class="menuEntry"><span><img src="images/icons/settings.png" /></span><div tkey="MENU_SETTINGS"></div></div></a>
+					<a href="advanced.htm"><div class="menuEntry"><span><img src="images/icons/advanced.png" /></span><div tkey="MENU_ADVANCED"></div></div></a>
+					<a href="chat.htm"><div class="menuEntry"><span><img src="images/icons/chat.png" /></span><div tkey="MENU_CHAT"></div></div></a>
+					<a href="logs.htm"><div class="menuEntry"><span><img src="images/icons/logs.png" /></span><div tkey="MENU_LOGS"></div></div></a>
+					<a href="update.htm"><div class="menuEntry"><span><img src="images/icons/update.png" /></span><div tkey="MENU_UPDATE"></div></div></a>
+					<a href="index.htm" onclick="document.cookie='authorization=Thu, 01-Jan-70 00:00:01 GMT;';"><div class="menuEntry"><span><img src="images/icons/logout.png" /></span><div tkey="MENU_LOGOUT"></div></div></a>
+				</div>
+				<!-- END_BEFORE_CONTENT -->
+                <div id="content">
+					<form action="advanced.htm" enctype="application/x-www-form-urlencoded" method="post" id="settingsForm">
+						<div class="formTitle">
+							<img src="images/icons/advanced/welcome_message.png">
+							<span tkey="ADVANCED_WELCOME_MESSAGE_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_WELCOME_MESSAGE_TEXT"></span></div>
+							<div class="row">
+								<div class="column three"><span tkey="ADVANCED_DEFAULT_MESSAGE_ENABLE_LABEL"></span><input type="text" name="default_welcomemessage_enable" size="30" value="###default_welcomemessage_enable###"></div>
+								<div class="column three"><span tkey="ADVANCED_DEFAULT_MESSAGE_MODE_LABEL"></span><input type="text" name="default_welcomemessage_message_mode" size="30" value="###default_welcomemessage_message_mode###"></div>
+							</div>
+							
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_DEFAULT_MESSAGE_LABEL"></span><textarea type="text" name="welcomemessage_file" size="30">###welcomemessage_file###</textarea></div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="column three"><span tkey="ADVANCED_GROUP_MESSAGE_ENABLE_LABEL"></span><input type="text" name="welcomemessage_enable" size="30" value="###welcomemessage_enable###"><br></div>
+								<div class="column three"><span tkey="ADVANCED_GROUP_MESSAGE_GROUPS_LABEL"></span><input type="text" name="welcomemessage_groups" size="30" value="###welcomemessage_groups###"><br></div>
+								<div class="column three"><span tkey="ADVANCED_GROUP_MESSAGE_MODE_LABEL"></span><input type="text" name="welcomemessage_message_mode" size="30" value="###welcomemessage_message_mode###"><br></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_GROUP_MESSAGE_LABEL"></span><textarea type="text" name="welcomemessage_message" size="30">###welcomemessage_message###</textarea></div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_WELCOME_SOUND_ENABLE_LABEL"></span><input type="text" name="welcomesound_enable" size="30" value="###welcomesound_enable###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_WELCOME_MUSIC_FILE_LABEL"></span><input type="text" name="welcome_sound_music_file" size="30" value="###welcome_sound_music_file###">
+								</div>
+							</div>
+							<div class="row">
+								<div class="column big">
+									<span tkey="SETTINGS_ROBOT_VOICE_WELCOME_MESSAGE_LABEL"></span>
+									<textarea name="welcome_sound_say_message">###welcome_sound_say_message###</textarea>
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/automove.png">
+							<span tkey="ADVANCED_AUTOMOVE_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_AUTOMOVE_TEXT"></span></div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_AUTOMOVE_ENABLE_LABEL"></span><input type="text" name="automove_enable" size="30" value="###automove_enable###">
+							</div><div class="column three"><span tkey="ADVANCED_AUTOMOVE_MESSAGE_MODE_LABEL"></span><input type="text" name="automove_message_mode" size="30" value="###automove_message_mode###"></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_AUTOMOVE_MESSAGE_LABEL"></span><textarea type="text" name="automove_file" size="30">###automove_file###</textarea></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_AUTOMOVE_SERVER_GROUPS_LABEL"></span><textarea type="text" name="automove_servergroup_list" size="30">###automove_servergroup_list###</textarea></div>
+							</div>
+						</div>
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/idle.png">
+							<span tkey="ADVANCED_IDLE_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_IDLE_TEXT"></span></div>
+							<div class="row">
+								<div class="column three"><span tkey="ADVANCED_IDLE_ENABLE_LABEL"></span><input type="text" name="idle_check_enable" size="30" value="###idle_check_enable###"><br></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_IDLE_MESSAGE_LABEL"></span><textarea type="text" name="idle_file" size="30">###idle_file###</textarea></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_IDLE_SECOND_MESSAGE_LABEL"></span><textarea type="text" name="idle_second_message" size="30">###idle_second_message###</textarea></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_IDLE_WARN_MESSAGE_LABEL"></span><textarea type="text" name="idle_warn_message" size="30">###idle_warn_message###</textarea></div>
+							</div>
+							<div class="row">
+								<div class="column three"><span tkey="ADVANCED_IDLE_MOVE_CHANNEL_ID_LABEL"></span><input type="text" name="idle_move_channel_id" size="30" value="###idle_move_channel_id###"><br></div>
+							</div>
+
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_IDLE_CHANNEL_LIST_LABEL"></span><input type="text" name="idle_channel_list" size="30" value="###idle_channel_list###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_IDLE_CHANNEL_LIST_MODE_LABEL"></span><input type="text" name="idle_channel_list_mode" size="30" value="###idle_channel_list_mode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_IDLE_GROUP_LIST_LABEL"></span><input type="text" name="idle_group_list" size="30" value="###idle_group_list###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_IDLE_GROUP_LIST_MODE_LABEL"></span><input type="text" name="idle_group_list_mode" size="30" value="###idle_group_list_mode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_IDLE_MAX_TIME_LABEL"></span><input type="text" name="idle_max_time" size="30" value="###idle_max_time###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_IDLE_SECOND_MAX_TIME_LABEL"></span><input type="text" name="idle_second_max_time" size="30" value="###idle_second_max_time###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_IDLE_WARN_TIME_LABEL"></span><input type="text" name="idle_warn_time" size="30" value="###idle_warn_time###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_IDLE_MIN_CLIENTS_COUNT_LABEL"></span><input type="text" name="idle_min_clients" size="30" value="###idle_min_clients###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_IDLE_MESSAGE_MODE_LABEL"></span><input type="text" name="idle_message_mode" size="30" value="###idle_message_mode###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_IDLE_WARN_MESSAGE_MODE_LABEL"></span><input type="text" name="idle_warn_message_mode" size="30" value="###idle_warn_message_mode###"><br>
+							</div>
+							</div>
+						</div>
+						
+						
+						
+						
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/away.png">
+							<span tkey="ADVANCED_AWAY_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_AWAY_TEXT"></span></div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_AWAY_CHECK_ENABLE_LABEL"></span><input type="text" name="away_check_enable" size="30" value="###away_check_enable###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_AWAY_MOVE_CHANNEL_ID_LABEL"></span><input type="text" name="away_move_channel_id" size="30" value="###away_move_channel_id###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_AWAY_MOVE_DELAY_LABEL"></span><input type="text" name="away_move_delay" size="30" value="###away_move_delay###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_AWAY_CHANNEL_LIST_LABEL"></span><input type="text" name="away_channel_list" size="30" value="###away_channel_list###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_AWAY_CHANNEL_LIST_MODE_LABEL"></span><input type="text" name="away_channel_list_mode" size="30" value="###away_channel_list_mode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_AWAY_GROUP_LIST_LABEL"></span><input type="text" name="away_group_list" size="30" value="###away_group_list###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_AWAY_GROUP_LIST_MODE_LABEL"></span><input type="text" name="away_group_list_mode" size="30" value="###away_group_list_mode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_AWAY_MESSAGE_MODE_LABEL"></span><input type="text" name="away_message_mode" size="30" value="###away_message_mode###"></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_AWAY_MESSAGE_LABEL"></span><textarea type="text" name="away_file" size="30">###away_file###</textarea></div>
+							</div>
+							
+						</div>
+						
+						
+						
+						
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/mute.png">
+							<span tkey="ADVANCED_MUTE_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_MUTE_TEXT"></span></div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_MUTE_CHECK_ENABLE_LABEL"></span><input type="text" name="mute_check_enable" size="30" value="###mute_check_enable###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_MUTE_MOVE_HEADPHONE_LABEL"></span><input type="text" name="mute_move_headphone" size="30" value="###mute_move_headphone###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_MUTE_MOVE_MICROPHONE_LABEL"></span><input type="text" name="mute_move_microphone" size="30" value="###mute_move_microphone###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_MUTE_MOVE_HEADPHONE_HARDWARE_LABEL"></span><input type="text" name="mute_move_headphone_hardware" size="30" value="###mute_move_headphone_hardware###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_MUTE_MOVE_MICROPHONE_HARDWARE_LABEL"></span><input type="text" name="mute_move_microphone_hardware" size="30" value="###mute_move_microphone_hardware###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_MUTE_MOVE_CHANNEL_ID_LABEL"></span><input type="text" name="mute_move_channel_id" size="30" value="###mute_move_channel_id###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_MUTE_MOVE_DELAY_LABEL"></span><input type="text" name="mute_move_delay" size="30" value="###mute_move_delay###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_MUTE_CHANNEL_LIST_LABEL"></span><input type="text" name="mute_channel_list" size="30" value="###mute_channel_list###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_MUTE_CHANNEL_LIST_MODE_LABEL"></span><input type="text" name="mute_channel_list_mode" size="30" value="###mute_channel_list_mode###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_MUTE_GROUP_LIST_LABEL"></span><input type="text" name="mute_group_list" size="30" value="###mute_group_list###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_MUTE_GROUP_LIST_MODE_LABEL"></span><input type="text" name="mute_group_list_mode" size="30" value="###mute_group_list_mode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_MUTE_MESSAGE_MODE_LABEL"></span><input type="text" name="mute_message_mode" size="30" value="###mute_message_mode###"><br>
+							</div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_MUTE_MESSAGE_LABEL"></span><textarea type="text" name="mute_file" size="30">###mute_file###</textarea></div>
+							</div>
+							
+						</div>
+						
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/server_ads.png">
+							<span tkey="ADVANCED_ADVERTISING_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_ADVERTISING_TEXT"></span></div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_ADVERTISING_ENABLE_LABEL"></span><input type="text" name="advertising_enable" size="30" value="###advertising_enable###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_ADVERTISING_CHANNEL_ID_LABEL"></span><input type="text" name="advertising_channel_id" size="30" value="###advertising_channel_id###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_ADVERTISING_REPEAT_TIME_LABEL"></span><input type="text" name="advertising_repeat_time" size="30" value="###advertising_repeat_time###"><br>
+							</div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_ADVERTISING_MESSAGE_LABEL"></span><textarea type="text" name="advertising_file" size="30">###advertising_file###</textarea></div>
+							</div>
+						</div>
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/record.png">
+							<span tkey="ADVANCED_RECORD_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_RECORD_TEXT"></span></div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_RECORD_CHECK_ENABLED_LABEL"></span><input type="text" name="record_check_enable" size="30" value="###record_check_enable###"><br>
+							</div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_RECORD_MESSAGE_LABEL"></span><textarea type="text" name="record_file" size="30">###record_file###</textarea></div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_RECORD_MOVE_CHANNEL_ID_LABEL"></span><input type="text" name="record_move_channel_id" size="30" value="###record_move_channel_id###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_RECORD_CHANNEL_LIST_LABEL"></span><input type="text" name="record_channel_list" size="30" value="###record_channel_list###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_RECORD_CHANNEL_LIST_MODE_LABEL"></span><input type="text" name="record_channel_list_mode" size="30" value="###record_channel_list_mode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_RECORD_GROUP_LIST_LABEL"></span><input type="text" name="record_group_list" size="30" value="###record_group_list###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_RECORD_GROUP_LIST_MODE_LABEL"></span><input type="text" name="record_group_list_mode" size="30" value="###record_group_list_mode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_RECORD_ADD_COMPLAIN_LABEL"></span><input type="text" name="record_add_complain" size="30" value="###record_add_complain###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_RECORD_MESSAGE_MODE_LABEL"></span><input type="text" name="record_message_mode" size="30" value="###record_message_mode###"><br>
+							</div>
+							</div>
+						</div>
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/bad_nickname.png">
+							<span tkey="ADVANCED_BAD_NICKNAME_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_BAD_NICKNAME_TEXT"></span></div>
+							<div class="row">
+								<div class="column three"><span tkey="ADVANCED_BAD_NICKNAME_CHECK_ENABLE_LABEL"></span><input type="text" name="badnickname_check_enable" size="30" value="###badnickname_check_enable###"><br></div>
+								<div class="column three"><span tkey="ADVANCED_BAD_NICKNAME_ADD_COMPLAIN_LABEL"></span><input type="text" name="badnickname_add_complain" size="30" value="###badnickname_add_complain###"><br></div>
+								<div class="column three"><span tkey="ADVANCED_BAD_NICKNAME_GROUP_LIST_LABEL"></span><input type="text" name="badnickname_group_list" size="30" value="###badnickname_group_list###"><br></div>
+							</div>
+							<div class="row">
+								<div class="column three"><span tkey="ADVANCED_BAD_NICKNAME_GROUP_LIST_MODE_LABEL"></span><input type="text" name="badnickname_group_list_mode" size="30" value="###badnickname_group_list_mode###"><br></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_BAD_NICKNAME_MESSAGE_LABEL"></span><textarea type="text" name="badnickname_file" size="30">###badnickname_file###</textarea></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_BAD_NICKNAME_RULES_LABEL"></span><textarea type="text" name="badnickname_rules_string" size="30">###badnickname_rules_string###</textarea></div>
+							</div>
+							
+							
+						</div>
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/bad_channelname.png">
+							<span tkey="ADVANCED_BAD_CHANNELNAME_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_BAD_CHANNELNAME_TEXT"></span></div>
+							<div class="row">
+								<div class="column three"><span tkey="ADVANCED_BAD_CHANNELNAME_CHECK_ENABLE_LABEL"></span><input type="text" name="badchannelname_check_enable" size="30" value="###badchannelname_check_enable###"></div>
+								<div class="column three"><span tkey="ADVANCED_BAD_CHANNELNAME_CHANNEL_LIST_LABEL"></span><input type="text" name="badchannelname_channel_list" size="30" value="###badchannelname_channel_list###"></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_BAD_CHANNELNAME_RULES_LABEL"></span><textarea type="text" name="badchannelname_file" size="30">###badchannelname_file###</textarea></div>
+							</div>
+						</div>
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/servergroup_protection.png">
+							<span tkey="ADVANCED_SERVERGROUP_PROTECTION_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_SERVERGROUP_PROTECTION_TEXT"></span></div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_SERVERGREOUP_PROTECTION_ENABLE_LABEL"></span><input type="text" name="servergroupprotection_enable" size="30" value="###servergroupprotection_enable###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_SERVERGREOUP_PROTECTION_GROUPS_LABEL"></span><input type="text" name="servergroupprotection_groups" size="30" value="###servergroupprotection_groups###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_SERVERGREOUP_PROTECTION_KICK_LABEL"></span><input type="text" name="servergroupprotection_kick" size="30" value="###servergroupprotection_kick###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_SERVERGREOUP_PROTECTION_ADD_COMPLAIN_LABEL"></span><input type="text" name="servergroupprotection_add_complain" size="30" value="###servergroupprotection_add_complain###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_SERVERGREOUP_PROTECTION_ADD_MISSING_GROUPS_LABEL"></span><input type="text" name="servergroupprotection_add_missing_groups" size="30" value="###servergroupprotection_add_missing_groups###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_SERVERGREOUP_PROTECTION_MESSAGE_MODE_LABEL"></span><input type="text" name="servergroupprotection_message_mode" size="30" value="###servergroupprotection_message_mode###"><br>
+							</div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_SERVERGREOUP_PROTECTION_MESSAGE_LABEL"></span><textarea type="text" name="servergroupprotection_file" size="30">###servergroupprotection_file###</textarea></div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_SERVERGREOUP_PROTECTION_ALLOWED_CLIENTS_LABEL"></span><textarea type="text" name="servergroupprotection_identities_string" size="30">###servergroupprotection_identities_string###</textarea></div>
+							</div>
+						</div>
+						
+						
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/server_join_notify.png">
+							<span tkey="ADVANCED_SERVERGROUP_NOTIFY_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_SERVERGROUP_NOTIFY_TEXT"></span></div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_SERVERGREOUP_NOTIFY_ENABLE_LABEL"></span><input type="text" name="servergroupnotify_enable" size="30" value="###servergroupnotify_enable###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_SERVERGREOUP_NOTIFY_MESSAGE_MODE_LABEL"></span><input type="text" name="servergroupnotify_message_mode" size="30" value="###servergroupnotify_message_mode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_SERVERGREOUP_NOTIFY_GROUPS_LABEL"></span><input type="text" name="servergroupnotify_groups" size="30" value="###servergroupnotify_groups###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_SERVERGREOUP_NOTIFY_GROUP_TARGETS_LABEL"></span><input type="text" name="servergroupnotify_grouptargets" size="30" value="###servergroupnotify_grouptargets###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_SERVERGREOUP_NOTIFY_CHANNEL_LIST_LABEL"></span><input type="text" name="servergroupnotify_channel_list" size="30" value="###servergroupnotify_channel_list###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_SERVERGREOUP_NOTIFY_CHANNEL_LIST_MODE_LABEL"></span><input type="text" name="servergroupnotify_channel_list_mode" size="30" value="###servergroupnotify_channel_list_mode###"><br>
+							</div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_SERVERGREOUP_NOTIFY_MESSAGE_LABEL"></span><textarea type="text" name="servergroupnotify_file" size="30">###servergroupnotify_file###</textarea></div>
+							</div>
+						</div>
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/channel_join_notify.png">
+							<span tkey="ADVANCED_CHANNEL_JOIN_NOTIFY_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_CHANNEL_JOIN_NOTIFY_TEXT"></span></div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_CHANNEL_JOIN_NOTIFY_ENABLE_LABEL"></span><input type="text" name="channel_join_notify_enable" size="30" value="###channel_join_notify_enable###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_CHANNEL_JOIN_NOTIFY_MESSAGE_MODE_LABEL"></span><input type="text" name="channel_join_notify_message_mode" size="30" value="###channel_join_notify_message_mode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_CHANNEL_JOIN_NOTIFY_GROUPS_LABEL"></span><input type="text" name="channel_join_notify_groups" size="30" value="###channel_join_notify_groups###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_CHANNEL_JOIN_NOTIFY_GROUP_TARGETS_LABEL"></span><input type="text" name="channel_join_notify_grouptargets" size="30" value="###channel_join_notify_grouptargets###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_CHANNEL_JOIN_NOTIFY_CHANNEL_LIST_LABEL"></span><input type="text" name="channel_join_notify_channel_list" size="30" value="###channel_join_notify_channel_list###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_CHANNEL_JOIN_NOTIFY_CHANNEL_LIST_MODE_LABEL"></span><input type="text" name="channel_join_notify_channel_list_mode" size="30" value="###channel_join_notify_channel_list_mode###"><br>
+							</div>
+							</div>
+							<div class="row">
+								<div class="column big"><span tkey="ADVANCED_CHANNEL_JOIN_NOTIFY_MESSAGE_LABEL"></span><textarea type="text" name="channel_join_notify_file" size="30">###channel_join_notify_file###</textarea></div>
+							</div>
+						</div>
+						
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/advanced/advanced.png">
+							<span tkey="ADVANCED_ADVANCED_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description"><span class="text" tkey="ADVANCED_ADVANCED_TEXT"></span></div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_OTHER_SLOW_MODE_ENABLE_LABEL"></span><input type="text" name="bot_slowmode" size="30" value="###bot_slowmode###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_OTHER_CHECK_INTERVAL_LABEL"></span><input type="text" name="bot_check_interval" size="30" value="###bot_check_interval###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_OTHER_MESSAGE_ENCODING_LABEL"></span><input type="text" name="bot_messages_encoding" size="30" value="###bot_messages_encoding###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_OTHER_CLIENT_DB_LIST_CACHE_LABEL"></span><input type="text" name="bot_clientdblist_cache" size="30" value="###bot_clientdblist_cache###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_OTHER_DATE_PATTERN_LABEL"></span><input type="text" name="bot_date_pattern" size="30" value="###bot_date_pattern###"><br>
+							</div><div class="column three"><span tkey="ADVANCED_OTHER_CONNECT_FOREVER_LABEL"></span><input type="text" name="bot_connect_forever" size="30" value="###bot_connect_forever###"><br>
+							</div>
+							</div>
+							<div class="row">
+							<div class="column three"><span tkey="ADVANCED_OTHER_LAST_SEEN_LABEL"></span><input type="text" name="command_lastseen" size="30" value="###command_lastseen###"><br>
+							</div>
+							</div>
+						</div>
+						
+						<a class="customButton" id="saveAll" style="background-size: 209px 70px; position: fixed; right: 245px; top: 100px; width: 200px;" onclick="document.getElementById('settingsForm').submit(); return;" href="#"><span tkey="ADVANCED_SAVE_ALL_BUTTON"></span></a>
+                        </form>
+                </div>
+				<!-- AFTER_CONTENT -->
+				<div id="rightPanel">
+					<div id="player">
+						<div id="cover"><img src="images/no_cover.png" /></div>
+						<div id="controls-bg"></div>
+						<div id="topcontrols-bg"></div>
+						<div id="timeline-container">
+							<div id="starttime">00:00</div>
+							<div id="timeline">
+								<div id="behind"></div>
+								<div id="behind"></div>
+								<div id="slider"></div>
+							</div>
+							<div id="endtime">00:00</div>
+						</div>
+						<div id="topcontrols">
+							<div id="playall"><img tkey="PLAYER_CONTROLS_PLAY_ALL_TEXT" src="images/icons/list.png" /></div>
+							<div id="random"><img tkey="PLAYER_CONTROLS_SHUFFLE_ALL_TEXT" src="images/icons/random.png" /></div>
+							<div id="repeat"><img tkey="PLAYER_CONTROLS_REPEAT_TEXT" src="images/icons/reload.png" /></div>
+							<div id="randomradio"><img tkey="PLAYER_CONTROLS_PLAY_RANDOM_RADIO_TEXT" src="images/icons/shoutcast.png" /></div>
+						</div>
+						<div id="controls">
+							<div id="pause"><img tkey="PLAYER_CONTROLS_PAUSE_PLAY_TEXT" src="images/icons/pause.png" /></div>
+							<div id="stop"><img tkey="PLAYER_CONTROLS_STOP_TEXT" src="images/icons/stop.png" /></div>
+							<div id="prev"><img tkey="PLAYER_CONTROLS_PREVIOUS_TEXT" src="images/icons/previous.png" /></div>
+							<div id="next"><img tkey="PLAYER_CONTROLS_NEXT_TEXT" src="images/icons/next.png" /></div>
+							<div id="volumemute"><img tkey="PLAYER_CONTROLS_VOLUME_CONTROL_TEXT" title="Volume control" alt="Volume control" src="images/icons/volume medium.png" /></div>
+							<div id="volumeup" style="position: absolute; right: 0; top: -4px; color: white; margin: 0; padding: 2px 5px 2px 5px; line-height: 5px;"><img style="width: 10px; height: 10px;" tkey="PLAYER_CONTROLS_VOLUME_UP_TEXT" src="images/icons/volume_up.png" /></div>
+							<div id="volumedown" style="position: absolute; right: 0; top: 10px; color: white; margin: 0; padding: 2px 5px 2px 5px; line-height: 5px;"><img style="width: 10px; height: 10px;" tkey="PLAYER_CONTROLS_VOLUME_DOWN_TEXT" src="images/icons/volume_down.png" /></div>
+						</div>
+						<div id="volume-value" style="position: absolute; top: 0; left: 0; font-size: 40px; font-weight: bold; display: none; z-index: 2; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); padding-top: 100px; text-align: center; color: #ffffff;">30%</div>
+						<div id="volume-slider"></div>
+						<div class="nowPlaying"><marquee class="text" behavior="scroll" direction="left" scrolldelay="0" scrollamount="3"></marquee></div>
+					</div>
+					<div class="youtubeBox" style="height: 185px;">
+						<div class="menutitle-right" style="background-image: url(images/menutitle_right.png); width: 225px; height: 30px; display: block; text-align: center; line-height: 30px;" tkey="MENU_RIGHT_TITLE_PLAY_LINKS_OR_ROBOT_VOICE_LABEL"></div>
+						<input type="text" class="customInput" id="playlink" name="playlink">
+						<a class="customButton" id="playyoutube" href="#"><span tkey="LABEL_PLAY_LINK"></span></a> <span style="position: relative; top: 6px;">(<a href="supported_sites.htm" target="_blank"><span tkey="LABEL_HELP"></span></a>)</span>
+						<div style="clear: right;"></div>
+						<a class="customButton" id="sayButton" href="#"><span tkey="LABEL_SAY_TEXT"></span></a>
+						<select id="sayLanguage" name="sayLanguage" style="float: right; margin-right: 10px;">
+							<option value="ca-es">Catalan [ca-es]</option>
+							<option value="zh-cn">Chinese (China) [zh-cn]</option>
+							<option value="zh-hk">Chinese (Hong Kong) [zh-hk]</option>
+							<option value="zh-tw">Chinese (Taiwan) [zh-tw]</option>
+							<option value="da-dk">Danish [da-dk]</option>
+							<option value="nl-nl">Dutch [nl-nl]</option>
+							<option value="en-au">English (Australia) [en-au]</option>
+							<option value="en-ca">English (Canada) [en-ca]</option>
+							<option value="en-gb">English (Great Britain) [en-gb]</option>
+							<option value="en-in">English (India) [en-in]</option>
+							<option value="en-us" selected>English (United States) [en-us]</option>
+							<option value="fi-fi">Finnish [fi-fi]</option>
+							<option value="fr-ca">French (Canada) [fr-ca]</option>
+							<option value="fr-fr">French (France) [fr-fr]</option>
+							<option value="de-de">German [de-de]</option>
+							<option value="it-it">Italian [it-it]</option>
+							<option value="ja-jp">Japanese [ja-jp]</option>
+							<option value="ko-kr">Korean [ko-kr]</option>
+							<option value="nb-no">Norwegian [nb-no]</option>
+							<option value="pl-pl">Polish [pl-pl]</option>
+							<option value="pt-br">Portuguese (Brazil) [pt-br]</option>
+							<option value="pt-pt">Portuguese (Portugal) [pt-pt]</option>
+							<option value="ru-ru">Russian [ru-ru]</option>
+							<option value="es-mx">Spanish (Mexico) [es-mx]</option>
+							<option value="es-es">Spanish (Spain) [es-es]</option>
+							<option value="sv-se">Swedish (Sweden) [sv-se]</option>
+						</select>
+						<a class="customButton" id="addYoutubeToQueue" href="#" style="width: 196px; margin-left: 9px;"><span tkey="ADD_LINK_TO_QUEUE_BUTTON_LABEL"></span></a>
+						<a class="customButton" id="downloadYoutube" href="#" style="width: 196px; margin-left: 9px; position: relative;"><span tkey="UPLOAD_YOUTUBE_TO_MP3_DOWNLOAD_BUTTON_LABEL"></span></a>
+					</div>
+					<div class="menutitle-right" style="background-image: url(images/menutitle_right.png); width: 225px; height: 30px; display: block; text-align: center; line-height: 30px; color: #ffffff;">Download Manager</div>
+					<div class="download-status" style="display:block; padding-left:10px; position:relative;">
+						<div class="download-info" style="color: #ffffff; display: block; min-height:110px;">
+							<div id="DOWNLOAD_STATUS"></div>
+							<div id="DOWNLOAD_SPEED"></div>
+							<div id="DOWNLOAD_SAVED_SIZE"></div>
+							<div id="DOWNLOAD_ETA"></div>
+							<div id="DOWNLOAD_DESTINATION"></div>
+						</div>
+						<div class="download-circle" id="download-circle" style="position: absolute; right: 0; top: 0; overflow: hidden;">
+							<strong class="value"></strong>
+						</div>
+					</div>
+					<div id="footer">
+						<div id="news"></div>
+						<p>&copy; 2012-2018 &middot; <a href="http://ts3musicbot.net">TS3MusicBot.net</a></p>
+					</div>
+				</div>
+            </div>
+        </div>
+		<!-- END_AFTER_CONTENT -->
+    </body>
+</html>

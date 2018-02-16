@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>Shoutcast search</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script>
+		$(document).ready(function() {
+			$('a').on('click', function(e) {
+				var link = $(this).attr('href');
+				if ($(this).attr('class') == 'customButton') {
+					e.preventDefault();
+					var downloadButton = $(this); 
+					$.get(link, function(data) {
+						if (data == 'ok') {
+							downloadButton.text("Download \u2713");
+						} else {
+							downloadButton.text("Download \u2717");
+						}
+					});
+				}
+			});
+			
+		});
+		</script>
+	</head>
+	<body style="overflow: auto !important;">
+		<div class="skins_header"><img src="images/skin_browser.png"></div>
+		###AVAILABLE_SKINS###
+	</body>
+</html>

@@ -1,0 +1,833 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+		<!-- BEGIN_HEADER -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="imagetoolbar" content="no" />
+		<meta property="og:title" content="TS3MusicBot Webinterface" />
+		<meta property="og:description" content="A Teamspeak 3 music bot controlled with chat commands for Linux (vServer/RootServer) and Windows. Plays music/radio/youtube/robot voice and more ..." />
+		<meta property="og:image" content="http://www.ts3musicbot.net/images/logo.gif" />
+        <title>TS3MusicBot Webinterface</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+		<style type="text/css">
+			@import url('/css/filelist.css');
+			@import url('/css/rss.css');
+			@import url('/css/settings.css');
+			@import url('/css/download-circle.css');
+		</style>
+        <script src="js/jquery.min.js"></script>
+		<script src="js/circle-progress.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/jquery.countdown.js"></script>
+		<script type="text/javascript" src="js/TS3MusicBot.js"></script>
+		<script src="js/jquery.zrssfeed.min.js" type="text/javascript"></script>
+		
+		<script type="text/javascript">
+		$(document).ready(function() {
+			
+			$('#currentSkin').load("getcurrentskin");
+			$('#changeSkin').load("getavailableskins");
+			
+			var openCategory = false;
+			$(".formTitle").click(function(){
+				$(".settings-infobox").remove();
+				$(this).effect( "bounce", { distance: 10, times: 2 }, "slow", function() {
+					if (openCategory == false) {
+						$(".formTitle").not(this).fadeOut("slow");
+						$(this).next().delay(1000).fadeIn("slow");
+						$(this).append('<img id="backArrow" src="images/icons/arrow_back.png" style="height: 50px; position: absolute; top: 20px; left: -10px; z-index: 2;">').find("#backArrow").hide().delay(1000).fadeIn("slow");
+						openCategory = true;
+					} else {
+						$(this).next().fadeOut("slow");
+						$(".formTitle").not(this).fadeIn("slow");
+						$("#backArrow").delay(1000).fadeOut("slow").remove();
+						openCategory = false;
+					}
+				});
+			});
+			
+			
+			
+		});
+		</script>
+		<!-- END_HEADER -->
+    </head>
+    <body>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.11&appId=332782323451490';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	<!-- BEFORE_CONTENT -->
+	<div id="wrapper">
+			<div id="header">
+                <div id="title">
+                    <h1>TS3MusicBot Webinterface</h1>
+                </div>
+				<div class="fb-like" data-href="https://www.facebook.com/ts3musicbot.net" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+            </div>
+            <div id="main">
+				<div id="leftPanel">
+					<a href="index.htm"><div class="menuEntry"><span><img src="images/icons/music.png" /></span><div tkey="MENU_MUSIC"></div></div></a>
+					<a href="radio.htm"><div class="menuEntry"><span><img src="images/icons/radio.png" /></span><div tkey="MENU_RADIO"></div></div></a>
+					<a href="playlist.htm"><div class="menuEntry"><span><img src="images/icons/playlist.png" /></span><div tkey="MENU_PLAYLIST"></div></div></a>
+					<a href="youtube.htm"><div class="menuEntry"><span><img src="images/icons/youtube.png" /></span><div tkey="MENU_YOUTUBE"></div></div></a>
+					<a href="queue.htm"><div class="menuEntry"><span><img src="images/icons/queue.png" /></span><div tkey="MENU_QUEUE"></div></div></a>
+					<a href="history.htm"><div class="menuEntry"><span><img src="images/icons/history.png" /></span><div tkey="MENU_HISTORY"></div></div></a>
+					<a href="channelswitch.htm"><div class="menuEntry"><span><img src="images/icons/channelswitch.png" /></span><div tkey="MENU_CHANNEL_SWITCH"></div></div></a>
+					<a href="commandlist.htm"><div class="menuEntry"><span><img src="images/icons/commandlist.png" /></span><div tkey="MENU_COMMANDLIST"></div></div></a>
+					<a href="settings.htm"><div class="menuEntry"><span><img src="images/icons/settings.png" /></span><div tkey="MENU_SETTINGS"></div></div></a>
+					<a href="advanced.htm"><div class="menuEntry"><span><img src="images/icons/advanced.png" /></span><div tkey="MENU_ADVANCED"></div></div></a>
+					<a href="chat.htm"><div class="menuEntry"><span><img src="images/icons/chat.png" /></span><div tkey="MENU_CHAT"></div></div></a>
+					<a href="logs.htm"><div class="menuEntry"><span><img src="images/icons/logs.png" /></span><div tkey="MENU_LOGS"></div></div></a>
+					<a href="update.htm"><div class="menuEntry"><span><img src="images/icons/update.png" /></span><div tkey="MENU_UPDATE"></div></div></a>
+					<a href="index.htm" onclick="document.cookie='authorization=Thu, 01-Jan-70 00:00:01 GMT;';"><div class="menuEntry"><span><img src="images/icons/logout.png" /></span><div tkey="MENU_LOGOUT"></div></div></a>
+				</div>
+				<!-- END_BEFORE_CONTENT -->
+                <div id="content">
+					<form action="settings.htm" enctype="application/x-www-form-urlencoded" method="post" id="settingsForm">
+						<div class="formTitle">
+							<img src="images/icons/settings/teamspeak_server.png">
+							<span tkey="SETTINGS_TEAMSPEAK_SERVER_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description" tkey="SETTINGS_TEAMSPEAK_SERVER_TEXT"></div>
+							<div class="row">
+								<div class="column">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_ADDRESS_LABEL"></span> <span class="teamspeak-server-details">###ts3_server_address###</span>
+									<input type="hidden" name="ts3_server_address" size="30" value="###ts3_server_address###">
+								</div>
+							</div>
+							<div class="row">
+								<div class="column">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_PORT_LABEL"></span> <span class="teamspeak-server-details">###ts3_virtualserver_port###</span>
+									<input type="hidden" name="ts3_server_port" size="30" value="###ts3_server_password###">
+								</div>
+							</div>
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_PASSWORD_LABEL"></span><input type="text" name="ts3_server_password" size="30" value="###ts3_server_password###">
+								</div>
+							</div>
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_QUERY_PORT_LABEL"></span><input type="text" name="ts3_server_query_port" size="30" value="###ts3_server_query_port###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_QUERY_LOGIN_LABEL"></span><input type="text" name="ts3_server_query_login" size="30" value="###ts3_server_query_login###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_QUERY_PASSWORD_LABEL"></span><input type="text" name="ts3_server_query_password" size="30" value="###ts3_server_query_password###">
+								</div>
+							</div>
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_VIRTUAL_ID_LABEL"></span><input type="text" name="ts3_virtualserver_id" size="30" value="###ts3_virtualserver_id###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_JOIN_CHANNEL_ID_LABEL"></span><input type="text" name="bot_channel_id" size="30" value="###bot_channel_id###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_JOIN_CHANNEL_PASSWORD_LABEL"></span><input type="text" name="bot_channel_password" size="30" value="###bot_channel_password###">
+								</div>
+							</div>
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_DISCORD_DEFAULT_TEXT_CHANNEL_ID_LABEL"></span><input type="text" name="discord_default_text_channel" size="30" value="###discord_default_text_channel###">
+								</div>
+							</div>
+							<div class="row" id="channelCommanderSettings">
+								<div class="column three">
+									<span tkey="SETTINGS_TEAMSPEAK_SERVER_CHANNELCOMMANDER_LABEL"></span><input type="text" name="channelcommander" size="30" value="###channelcommander###">
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						
+						
+						<div class="formTitle">
+							<img src="images/icons/settings/ts3musicbot_settings.png">
+							<span tkey="SETTINGS_TS3MUSICBOT_SETTINGS_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description" tkey="SETTINGS_TS3MUSICBOT_TEXT"></div>
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_CLIENT_NAME_LABEL"></span><input type="text" name="ts3_musicbot_name" size="30" value="###ts3_musicbot_name###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_QUERY_BOT_NAME_NAME_LABEL"></span><input type="text" name="bot_server_query_name" size="30" value="###bot_server_query_name###">
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="column big">
+									<span tkey="SETTINGS_BOT_ADMINS_LABEL"></span><textarea type="text" name="bot_admin_list" size="30">###bot_admin_list###</textarea>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="column big">
+									<span tkey="SETTINGS_MUSIC_ADMINS_LABEL"></span><textarea type="text" name="radio_admin_list" size="30">###radio_admin_list###</textarea>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_BOT_ADMINS_GROUP_ID_LABEL"></span><input type="text" name="bot_admin_server_group_id" size="30" value="###bot_admin_server_group_id###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_MUSIC_ADMINS_GROUP_ID_LABEL"></span><input type="text" name="radio_admin_server_group_id" size="30" value="###radio_admin_server_group_id###">
+								</div>
+							</div>
+							
+							
+							<div class="row">
+								<div class="column three">
+								<span tkey="SETTINGS_ROBOT_VOICE_DEFAULT_LANGUAGE_LABEL"></span><input type="text" name="welcome_sound_say_language" size="30" value="###welcome_sound_say_language###">
+								</div>
+							</div>
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_YOUTUBE_PROXY_LABEL"></span><input type="text" name="youtube_proxy" size="30" value="###youtube_proxy###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_WHISPER_MODE_LABEL"></span><input type="text" name="whispermode" size="30" value="###whispermode###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_STOP_IF_CHANNEL_EMPTY_ENABLE_LABEL"></span><input type="text" name="autostop_channel_empty" size="30" value="###autostop_channel_empty###">
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_CHANNEL_NOTIFICATIONS_ENABLE_LABEL"></span><input type="text" name="channel_notifications_enable" size="1" value="###channel_notifications_enable###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_SEND_RADIO_INFORMATIONS_ENABLE_LABEL"></span><input type="text" name="send_radio_infos" size="30" value="###send_radio_infos###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_SEND_CLICKABLE_LINKS_ENABLE_LABEL"></span><input type="text" name="sendclickablelinks" size="30" value="###sendclickablelinks###">
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_AUTOSTART_LABEL"></span><input type="text" name="autostart" size="100" value="###autostart###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_REPEAT_AUTOSTART_LABEL"></span><input type="text" name="repeat" size="30" value="###repeat###">
+								</div>
+								<div class="column three">
+									<span tkey="SETTINGS_INITIAL_VOLUME_LABEL"></span><input type="text" name="initial_volume" size="30" value="###volume###">
+								</div>
+							</div>
+						</div>
+
+						
+						
+						<div class="formTitle" id="avatarSettings" style="display: none;">
+							<img src="images/icons/settings/avatar_settings.png">
+							<span tkey="SETTINGS_AVATAR_LABEL"></span>
+						</div>
+						<div class="fields">
+							<div class="description" tkey="SETTINGS_AVATAR_TEXT"></div>
+							
+							<div class="row">
+								<div class="column four">
+									<span tkey="SETTINGS_AVATAR_MODE_LABEL"></span>
+									<input type="text" name="dynamic_avatar_mode" size="30" value="###dynamic_avatar_mode###">
+								</div>
+							</div>
+					</form>
+							<hr>
+							<div class="row">
+								<div class="column" style="width: 300px; float: left;">
+									<span tkey="SETTINGS_AVATAR_CURRENT_IMAGE_LABEL"></span>
+									<img style="max-width: 300px;" src="currentavatar" />
+								</div>
+								<div class="column" style="width: 435px; margin: 0 -25px 30px 0;">
+									<b>HTML embed code:</b>
+									<script language="javascript" type="text/javascript">
+										var host = 'http://' + window.location.hostname + (location.port ? ':'+location.port: '');
+										document.write('<textarea style="width: 410px; margin: 0; height: 100px" name="avatar_embed_code" readonly><img style="max-width: 300px;" src="' + host + '/currentavatar" alt="Currently playing with TS3MusicBot&reg;." title="Currently playing with TS3MusicBot&reg;." /></textarea>');
+									</script>
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="column" style="width: 300px; float: left;">
+									<span tkey="SETTINGS_AVATAR_UPLOAD_LABEL"></span>
+									<form action="uploadavatar" id="uploadavatarForm" method="post" enctype="multipart/form-data">
+									  <p>
+										<input name="datafile" style="margin-left: 0px; background: none; width: auto; border: 0;" type="file" size="50" accept="image/*">
+										<a class="customButton" style="margin: 10px 0 20px 0;" onclick="document.getElementById('uploadavatarForm').submit(); return;" href="#" tkey="SETTINGS_IDENTITY_UPLOAD_BUTTON_LABEL"></a>
+									  </p>
+									</form>
+								</div>
+								<div class="column" style="width: 435px; margin: 0 -25px 30px 0;">
+									<span tkey="SETTINGS_AVATAR_MODE_0_TEXT"></span>
+									<div id="OPEN_AVATAR_GENERATOR" style="cursor: pointer; width: 150px;" title="Open avatar generator" alt="Open avatar generator"><img src="images/Avatar_Generator.jpg"></div>
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="column" style="width: 300px; float: left;">
+									<img src="images/avatar_mode_1.gif" />
+								</div>
+								<div class="column" style="width: 435px; margin: 0 -25px 30px 0;">
+									<span tkey="SETTINGS_AVATAR_MODE_1_TEXT"></span>
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="column" style="width: 300px; float: left;">
+									<img src="images/avatar_mode_2.gif" />
+								</div>
+								<div class="column" style="width: 435px; margin: 0 -25px 30px 0;">
+									<span tkey="SETTINGS_AVATAR_MODE_2_TEXT"></span>
+								</div>
+							</div>
+							
+						</div>
+					
+					
+					<div class="formTitle">
+						<img src="images/icons/settings/identity.png">
+						<span tkey="SETTINGS_IDENTITY_IMPORT_LABEL"></span>
+					</div>
+					<div class="fields">
+						<div class="description" tkey="SETTINGS_IDENTITY_IMPORT_TEXT"></div>
+						<div class="row">
+							<form action="uploadidentity" id="uploadIdentityForm" method="post" enctype="multipart/form-data">
+							  <p>
+								<input name="datafile" style="margin-left: 0px; background: none; width: auto; border: 0;" type="file" size="50" accept=".ini">
+								<a class="customButton" style="margin: 10px 0 20px 0;" onclick="document.getElementById('uploadIdentityForm').submit(); return;" href="#" tkey="SETTINGS_IDENTITY_UPLOAD_BUTTON_LABEL"></a>
+							  </p>
+							</form>
+						</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					<div class="formTitle">
+						<img src="images/icons/settings/skin.png">
+						<span tkey="SETTINGS_SKIN_LABEL"></span>
+					</div>
+					<div class="fields">
+						<div class="description" tkey="SETTINGS_SKIN_TEXT"></div>
+						<form action="setskin" id="setSkinForm" method="post" enctype="multipart/form-data">
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_SKIN_CURRENT_SKIN_LABEL"></span><b><span id="currentSkin"></span></b>
+								</div>
+								<div class="column three">
+									<a href="#" onclick="window.open('skins.htm', 'newwindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=1020,height=660'); return false;"><b><span tkey="SETTINGS_SKIN_SKIN_BROWSER_LABEL"></span></b></a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="column three">
+									<span tkey="SETTINGS_SKIN_SELECT_SKIN_LABEL"></span><span id="changeSkin"></span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="column three">
+									<a class="customButton" style="margin: 10px 10px 20px 0; float: left;" onclick="document.getElementById('setSkinForm').submit(); return;" href="#"><span tkey="SETTINGS_SKIN_CHANGE_SKIN_BUTTON_LABEL"></span><span id="changeSkin"></span></a> <a class="customButton" style="margin: 10px 0 20px 0;" onclick="document.getElementById('setSkinForm').action='deleteskin'; document.getElementById('setSkinForm').submit(); return;" href="#"><span tkey="SETTINGS_SKIN_DELETE_SKIN_BUTTON_LABEL"></span></a>
+								</div>
+							</div>
+						</form>
+					</div>
+					
+					
+					
+					
+					<div class="formTitle">
+						<img src="images/icons/settings/user_permissions.png">
+						<span tkey="SETTINGS_USER_PERMISSIONS_LABEL"></span>
+					</div>
+					<div class="fields">
+						<div class="description" tkey="SETTINGS_USER_PERMISSIONS_TEXT"></div>
+						
+						<div id="userWebinterfaceChatSwitcher">
+							<div class="showWebinterfacePermissions active" tkey="SETTINGS_USER_PERMISSIONS_SWITCHER_WEBINTERFACE_LABEL"></div>
+							<div class="showChatPermissions" tkey="SETTINGS_USER_PERMISSIONS_SWITCHER_CHAT_LABEL"></div>
+						</div>
+						
+						<div id="user-webinterface-permissions">
+							<form action="setuserpermissions" id="setUserPermissionsForm" method="post" enctype="multipart/form-data">
+								<div class="row">
+									<div class="column three" style="margin: 0 50px 8px 0;">
+										<a class="customButton" style="margin: 10px 10px 0 0; float: left; width: 180px; background-size: 189px 70px;" onclick="document.getElementById('setUserPermissionsForm').submit(); return;" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_SET_PERMISSIONS_BUTTON_LABEL"></span></a>
+									</div>
+									<span style="position: relative; top: 12px; font-weight: bold;"><a id="userPermissionsCheckAll" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_CHECK_ALL_LABEL"></span></a> / <a id="userPermissionsUncheckAll" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_UNCHECK_ALL_LABEL"></span></a></span>
+								</div>
+								<div class="row">
+									<div class="column three userPermissionsColumnTitle"><b><span tkey="SETTINGS_USER_PERMISSIONS_MUSIC_LABEL"></span></b></div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="music_play" type="checkbox"###music_play###><span tkey="SETTINGS_USER_PERMISSIONS_MUSIC_PLAY_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="music_delete" type="checkbox"###music_delete###><span tkey="SETTINGS_USER_PERMISSIONS_MUSIC_DELETE_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="music_move" type="checkbox"###music_move###><span tkey="SETTINGS_USER_PERMISSIONS_MUSIC_MOVE_LABEL"></span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="music_createplaylist" type="checkbox"###music_createplaylist###><span tkey="SETTINGS_USER_PERMISSIONS_MUSIC_CREATE_PLAYLIST_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumnTitle"><b><span tkey="SETTINGS_USER_PERMISSIONS_RADIO_LABEL"></span></b></div>
+								</div>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="radio_play" type="checkbox"###radio_play###><span tkey="SETTINGS_USER_PERMISSIONS_RADIO_PLAY_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="radio_delete" type="checkbox"###radio_delete###><span tkey="SETTINGS_USER_PERMISSIONS_RADIO_DELETE_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="radio_move" type="checkbox"###radio_move###><span tkey="SETTINGS_USER_PERMISSIONS_RADIO_MOVE_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="radio_shoutcastbrowser" type="checkbox"###radio_shoutcastbrowser###><span tkey="SETTINGS_USER_PERMISSIONS_OPEN_SHOUTCAST_BROWSER_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="radio_shoutcastbrowser_play" type="checkbox"###radio_shoutcastbrowser_play###><span tkey="SETTINGS_USER_PERMISSIONS_PLAY_SHOUTCAST_BROWSER_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="radio_shoutcastbrowser_download" type="checkbox"###radio_shoutcastbrowser_download###><span tkey="SETTINGS_USER_PERMISSIONS_DOWNLOAD_SOUTCAST_BROWSER_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumnTitle"><b><span tkey="SETTINGS_USER_PERMISSIONS_PLAYLIST_LABEL"></span></b></div>
+								</div>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="playlist_play" type="checkbox"###playlist_play###><span tkey="SETTINGS_USER_PERMISSIONS_PLAYLIST_PLAY_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="playlist_content" type="checkbox"###playlist_content###><span tkey="SETTINGS_USER_PERMISSIONS_PLAYLIST_SHOW_CONTENT_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="playlist_delete" type="checkbox"###playlist_delete###><span tkey="SETTINGS_USER_PERMISSIONS_PLAYLIST_DELETE_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumnTitle"><b><span tkey="SETTINGS_USER_PERMISSIONS_QUEUE_LABEL"></span></b></div>
+								</div>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="queueadd" type="checkbox"###queueadd###><span tkey="SETTINGS_USER_PERMISSIONS_QUEUE_ADD_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumnTitle"><b><span tkey="SETTINGS_USER_PERMISSIONS_UPLOAD_LABEL"></span></b></div>
+								</div>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="upload_music" type="checkbox"###upload_music###><span tkey="SETTINGS_USER_PERMISSIONS_UPLOAD_MUSIC_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="upload_radio" type="checkbox"###upload_radio###><span tkey="SETTINGS_USER_PERMISSIONS_UPLOAD_RADIO_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="upload_create_musicfolder" type="checkbox"###upload_create_musicfolder###><span tkey="SETTINGS_USER_PERMISSIONS_CREATE_MUSIC_FOLDER_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="upload_create_radiofolder" type="checkbox"###upload_create_radiofolder###><span tkey="SETTINGS_USER_PERMISSIONS_CREATE_RADIO_FOLDER_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="upload_youtubemp3" type="checkbox"###upload_youtubemp3###><span tkey="SETTINGS_USER_PERMISSIONS_YOUTUBE_TO_MP3_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumnTitle"><b><span tkey="SETTINGS_USER_PERMISSIONS_PLAYER_LABEL"></span></b></div>
+								</div>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="player_playall" type="checkbox"###player_playall###><span tkey="SETTINGS_USER_PERMISSIONS_PLAY_ALL_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="player_playallrandom" type="checkbox"###player_playallrandom###><span tkey="SETTINGS_USER_PERMISSIONS_PLAY_ALL_RANDOM_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="player_playfolderrandom" type="checkbox"###player_playfolderrandom###><span tkey="SETTINGS_USER_PERMISSIONS_PLAY_FOLDER_RANDOM_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="player_playplaylistrandom" type="checkbox"###player_playplaylistrandom###><span tkey="SETTINGS_USER_PERMISSIONS_PLAY_PLAYLIST_RANDOM_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="player_repeat" type="checkbox"###player_repeat###><span tkey="SETTINGS_USER_PERMISSIONS_REPEAT_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="player_randomradio" type="checkbox"###player_randomradio###><span tkey="SETTINGS_USER_PERMISSIONS_RANDOM_RADIO_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="player_pause" type="checkbox"###player_pause###><span tkey="SETTINGS_USER_PERMISSIONS_PAUSE_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="player_stop" type="checkbox"###player_stop###><span tkey="SETTINGS_USER_PERMISSIONS_STOP_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="player_previous" type="checkbox"###player_previous###><span tkey="SETTINGS_USER_PERMISSIONS_PREVIOUS_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="player_next" type="checkbox"###player_next###><span tkey="SETTINGS_USER_PERMISSIONS_NEXT_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="player_volume" type="checkbox"###player_volume###><span tkey="SETTINGS_USER_PERMISSIONS_VOLUME_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="player_seek" type="checkbox"###player_seek###><span tkey="SETTINGS_USER_PERMISSIONS_SEEK_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="player_links" type="checkbox"###player_links###><span tkey="SETTINGS_USER_PERMISSIONS_PLAY_LINKS_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="player_saytext" type="checkbox"###player_saytext###><span tkey="SETTINGS_USER_PERMISSIONS_SAY_TEXT_LABEL"></span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumnTitle"><b><span tkey="SETTINGS_USER_PERMISSIONS_OTHER_LABEL"></span></b></div>
+								</div>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="channelswitch" type="checkbox"###channelswitch###><span tkey="SETTINGS_USER_PERMISSIONS_CHANNEL_SWITCH_LABEL"></span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat" type="checkbox"###chat###><span tkey="SETTINGS_USER_PERMISSIONS_CHAT_LABEL"></span>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="column three">
+										<a class="customButton" style="margin: 10px 10px 20px 0; float: left; width: 180px; background-size: 189px 70px;" onclick="document.getElementById('setUserPermissionsForm').submit(); return;" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_SET_PERMISSIONS_BUTTON_LABEL"></span></a>
+									</div>
+									<span style="position: relative; top: 12px; font-weight: bold;"><a id="userPermissionsCheckAll" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_CHECK_ALL_LABEL"></span></a> / <a id="userPermissionsUncheckAll" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_UNCHECK_ALL_LABEL"></span></a></span>
+								</div>
+								
+							</form>
+						
+						</div>
+						
+						
+						
+						
+						
+						
+						<div id="user-chat-permissions">
+							<form action="setchatuserpermissions" id="setUserChatPermissionsForm" method="post" enctype="multipart/form-data">
+								<div class="row">
+									<div class="column three" style="margin: 0 50px 8px 0;">
+										<a class="customButton" style="margin: 10px 10px 0 0; float: left; width: 180px; background-size: 189px 70px;" onclick="document.getElementById('setUserChatPermissionsForm').submit(); return;" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_SET_PERMISSIONS_BUTTON_LABEL"></span></a>
+									</div>
+									<span style="position: relative; top: 12px; font-weight: bold;"><a id="userChatPermissionsCheckAll" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_CHECK_ALL_LABEL"></span></a> / <a id="userChatPermissionsUncheckAll" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_UNCHECK_ALL_LABEL"></span></a></span>
+								</div>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_history" type="checkbox"###chat_history###><span>!history</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_radiostart" type="checkbox"###chat_radiostart###><span>!radio xxxx</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_randomradio" type="checkbox"###chat_randomradio###><span>!randomradio</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_musicstart" type="checkbox"###chat_musicstart###><span>!music xxxx</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_addmusic" type="checkbox"###chat_addmusic###><span>!addmusic</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_stop" type="checkbox"###chat_stop###><span>!stop</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_channelcommander" type="checkbox"###chat_channelcommander###><span>!channelcommander</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_volume" type="checkbox"###chat_volume###><span>!volume/!vol</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_youtubedownload" type="checkbox"###chat_youtubedownload###><span>!youtubedownload/!ytdl</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_ytgoto" type="checkbox"###chat_ytgoto###><span>!ytgoto</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_youtube" type="checkbox"###chat_youtube###><span>!youtube/!yt</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_addyoutube" type="checkbox"###chat_addyoutube###><span>!addyoutube/!addyt</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_playall" type="checkbox"###chat_playall###><span>!playall</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_playallrandom" type="checkbox"###chat_playallrandom###><span>!playallrandom</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_pause" type="checkbox"###chat_pause###><span>!pause</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_mute" type="checkbox"###chat_mute###><span>!mute</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_repeat" type="checkbox"###chat_repeat###><span>!repeat</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_next" type="checkbox"###chat_next###><span>!next</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_prev" type="checkbox"###chat_prev###><span>!prev</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_say" type="checkbox"###chat_say###><span>!say</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_radiolist" type="checkbox"###chat_radiolist###><span>!radio</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_playlist" type="checkbox"###chat_playlist###><span>!playlist</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_musiclist" type="checkbox"###chat_musiclist###><span>!music</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_downloadmusic" type="checkbox"###chat_downloadmusic###><span>!downloadmusic</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_downloadradio" type="checkbox"###chat_downloadradio###><span>!downloadradio</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_deleteradio" type="checkbox"###chat_deleteradio###><span>!deleteradio</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_playliststart" type="checkbox"###chat_playliststart###><span>!playlist xxxx</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_deleteplaylist" type="checkbox"###chat_deleteplaylist###><span>!deleteplaylist</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_deletemusic" type="checkbox"###chat_deletemusic###><span>!deletemusic</span>
+									</div>
+									<div class="column three userPermissionsColumn">
+										<input name="chat_welcomesoundoff" type="checkbox"###chat_welcomesoundoff###><span>!welcomesoundoff</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three userPermissionsColumn">
+										<input name="chat_search" type="checkbox"###chat_search###><span>!search</span>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="column three">
+										<a class="customButton" style="margin: 10px 10px 20px 0; float: left; width: 180px; background-size: 189px 70px;" onclick="document.getElementById('setUserChatPermissionsForm').submit(); return;" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_SET_PERMISSIONS_BUTTON_LABEL"></span></a>
+									</div>
+									<span style="position: relative; top: 12px; font-weight: bold;"><a id="userChatPermissionsCheckAll" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_CHECK_ALL_LABEL"></span></a> / <a id="userPermissionsUncheckAll" href="#"><span tkey="SETTINGS_USER_PERMISSIONS_UNCHECK_ALL_LABEL"></span></a></span>
+								</div>
+								
+							</form>
+						
+						</div>
+						
+						
+						
+						
+						
+						
+					</div>
+					
+					
+					<div class="formTitle">
+						<img src="images/icons/settings/restart.png">
+						<span tkey="SETTINGS_PROCESS_MANAGEMENT_LABEL"></span>
+					</div>
+					<div class="fields">
+						<div class="description" tkey="SETTINGS_SOFT_RESTART_TEXT"></div>
+						<div class="row">
+							<div class="column three"><span tkey="SETTINGS_PROCESS_MANAGEMENT_SOFT_RESTART_LABEL"></span></div>
+							<div class="column three">
+								<form id="restartBotForm" method="post" action="restart">
+									<a class="customButton red" style="width: 200px; background-size: 100% 142px;" onclick="document.getElementById('restartBotForm').submit(); return;" href="#"><span tkey="SETTINGS_PROCESS_MANAGEMENT_SOFT_RESTART_BUTTON_LABEL"></span></a>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<div class="column three"><span tkey="SETTINGS_PROCESS_MANAGEMENT_SHUTDOWN_LABEL"></span></div>
+							<div class="column three">
+								<form id="shutdownBotForm" method="post" action="shutdown">
+									<a class="customButton red" style="width: 200px; background-size: 100% 142px;" onclick="document.getElementById('shutdownBotForm').submit(); return;" href="#"><span tkey="SETTINGS_PROCESS_MANAGEMENT_SHUTDOWN_BUTTON_LABEL"></span></a>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+					<a class="customButton" style="background-size: 209px 70px; position: fixed; right: 245px; top: 100px; width: 200px;" onclick="document.getElementById('settingsForm').submit(); return;" href="#"><span tkey="SETTINGS_SAVE_ALL_BUTTON"></span></a>
+					
+                </div>
+				<!-- AFTER_CONTENT -->
+				<div id="rightPanel">
+					<div id="player">
+						<div id="cover"><img src="images/no_cover.png" /></div>
+						<div id="controls-bg"></div>
+						<div id="topcontrols-bg"></div>
+						<div id="timeline-container">
+							<div id="starttime">00:00</div>
+							<div id="timeline">
+								<div id="behind"></div>
+								<div id="behind"></div>
+								<div id="slider"></div>
+							</div>
+							<div id="endtime">00:00</div>
+						</div>
+						<div id="topcontrols">
+							<div id="playall"><img tkey="PLAYER_CONTROLS_PLAY_ALL_TEXT" src="images/icons/list.png" /></div>
+							<div id="random"><img tkey="PLAYER_CONTROLS_SHUFFLE_ALL_TEXT" src="images/icons/random.png" /></div>
+							<div id="repeat"><img tkey="PLAYER_CONTROLS_REPEAT_TEXT" src="images/icons/reload.png" /></div>
+							<div id="randomradio"><img tkey="PLAYER_CONTROLS_PLAY_RANDOM_RADIO_TEXT" src="images/icons/shoutcast.png" /></div>
+						</div>
+						<div id="controls">
+							<div id="pause"><img tkey="PLAYER_CONTROLS_PAUSE_PLAY_TEXT" src="images/icons/pause.png" /></div>
+							<div id="stop"><img tkey="PLAYER_CONTROLS_STOP_TEXT" src="images/icons/stop.png" /></div>
+							<div id="prev"><img tkey="PLAYER_CONTROLS_PREVIOUS_TEXT" src="images/icons/previous.png" /></div>
+							<div id="next"><img tkey="PLAYER_CONTROLS_NEXT_TEXT" src="images/icons/next.png" /></div>
+							<div id="volumemute"><img tkey="PLAYER_CONTROLS_VOLUME_CONTROL_TEXT" title="Volume control" alt="Volume control" src="images/icons/volume medium.png" /></div>
+							<div id="volumeup" style="position: absolute; right: 0; top: -4px; color: white; margin: 0; padding: 2px 5px 2px 5px; line-height: 5px;"><img style="width: 10px; height: 10px;" tkey="PLAYER_CONTROLS_VOLUME_UP_TEXT" src="images/icons/volume_up.png" /></div>
+							<div id="volumedown" style="position: absolute; right: 0; top: 10px; color: white; margin: 0; padding: 2px 5px 2px 5px; line-height: 5px;"><img style="width: 10px; height: 10px;" tkey="PLAYER_CONTROLS_VOLUME_DOWN_TEXT" src="images/icons/volume_down.png" /></div>
+						</div>
+						<div id="volume-value" style="position: absolute; top: 0; left: 0; font-size: 40px; font-weight: bold; display: none; z-index: 2; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); padding-top: 100px; text-align: center; color: #ffffff;">30%</div>
+						<div id="volume-slider"></div>
+						<div class="nowPlaying"><marquee class="text" behavior="scroll" direction="left" scrolldelay="0" scrollamount="3"></marquee></div>
+					</div>
+					<div class="youtubeBox" style="height: 185px;">
+						<div class="menutitle-right" style="background-image: url(images/menutitle_right.png); width: 225px; height: 30px; display: block; text-align: center; line-height: 30px;" tkey="MENU_RIGHT_TITLE_PLAY_LINKS_OR_ROBOT_VOICE_LABEL"></div>
+						<input type="text" class="customInput" id="playlink" name="playlink">
+						<a class="customButton" id="playyoutube" href="#"><span tkey="LABEL_PLAY_LINK"></span></a> <span style="position: relative; top: 6px;">(<a href="supported_sites.htm" target="_blank"><span tkey="LABEL_HELP"></span></a>)</span>
+						<div style="clear: right;"></div>
+						<a class="customButton" id="sayButton" href="#"><span tkey="LABEL_SAY_TEXT"></span></a>
+						<select id="sayLanguage" name="sayLanguage" style="float: right; margin-right: 10px;">
+							<option value="ca-es">Catalan [ca-es]</option>
+							<option value="zh-cn">Chinese (China) [zh-cn]</option>
+							<option value="zh-hk">Chinese (Hong Kong) [zh-hk]</option>
+							<option value="zh-tw">Chinese (Taiwan) [zh-tw]</option>
+							<option value="da-dk">Danish [da-dk]</option>
+							<option value="nl-nl">Dutch [nl-nl]</option>
+							<option value="en-au">English (Australia) [en-au]</option>
+							<option value="en-ca">English (Canada) [en-ca]</option>
+							<option value="en-gb">English (Great Britain) [en-gb]</option>
+							<option value="en-in">English (India) [en-in]</option>
+							<option value="en-us" selected>English (United States) [en-us]</option>
+							<option value="fi-fi">Finnish [fi-fi]</option>
+							<option value="fr-ca">French (Canada) [fr-ca]</option>
+							<option value="fr-fr">French (France) [fr-fr]</option>
+							<option value="de-de">German [de-de]</option>
+							<option value="it-it">Italian [it-it]</option>
+							<option value="ja-jp">Japanese [ja-jp]</option>
+							<option value="ko-kr">Korean [ko-kr]</option>
+							<option value="nb-no">Norwegian [nb-no]</option>
+							<option value="pl-pl">Polish [pl-pl]</option>
+							<option value="pt-br">Portuguese (Brazil) [pt-br]</option>
+							<option value="pt-pt">Portuguese (Portugal) [pt-pt]</option>
+							<option value="ru-ru">Russian [ru-ru]</option>
+							<option value="es-mx">Spanish (Mexico) [es-mx]</option>
+							<option value="es-es">Spanish (Spain) [es-es]</option>
+							<option value="sv-se">Swedish (Sweden) [sv-se]</option>
+						</select>
+						<a class="customButton" id="addYoutubeToQueue" href="#" style="width: 196px; margin-left: 9px;"><span tkey="ADD_LINK_TO_QUEUE_BUTTON_LABEL"></span></a>
+						<a class="customButton" id="downloadYoutube" href="#" style="width: 196px; margin-left: 9px; position: relative;"><span tkey="UPLOAD_YOUTUBE_TO_MP3_DOWNLOAD_BUTTON_LABEL"></span></a>
+					</div>
+					<div class="menutitle-right" style="background-image: url(images/menutitle_right.png); width: 225px; height: 30px; display: block; text-align: center; line-height: 30px; color: #ffffff;">Download Manager</div>
+					<div class="download-status" style="display:block; padding-left:10px; position:relative;">
+						<div class="download-info" style="color: #ffffff; display: block; min-height:110px;">
+							<div id="DOWNLOAD_STATUS"></div>
+							<div id="DOWNLOAD_SPEED"></div>
+							<div id="DOWNLOAD_SAVED_SIZE"></div>
+							<div id="DOWNLOAD_ETA"></div>
+							<div id="DOWNLOAD_DESTINATION"></div>
+						</div>
+						<div class="download-circle" id="download-circle" style="position: absolute; right: 0; top: 0; overflow: hidden;">
+							<strong class="value"></strong>
+						</div>
+					</div>
+					<div id="footer">
+						<div id="news"></div>
+						<p>&copy; 2012-2018 &middot; <a href="http://ts3musicbot.net">TS3MusicBot.net</a></p>
+					</div>
+				</div>
+            </div>
+        </div>
+		<!-- END_AFTER_CONTENT -->
+    </body>
+</html>

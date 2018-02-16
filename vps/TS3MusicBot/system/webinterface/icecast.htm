@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>Icecast search</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/TS3MusicBot.js"></script>
+	</head>
+	<body style="background-color: #ffffff;">
+		<div class="icecast_header" style="float: left;"><img style="width: 150px;" src="images/icecast_search.png"></div>
+		<form action="icecast.htm" id="searchIcecastForm" method="post">
+			<input type="text" name="search" class="searchbar" style="width: 375px;">
+			<a href="#" onclick="document.getElementById('searchIcecastForm').submit(); return;" class="customButton"><span tkey="SHOUTCAST_SEARCH_LABEL"></span></a>
+		</form>
+		###SEARCH_RESULTS###
+		<div id="downloadForm">
+			<p><span tkey="SHOUTCAST_DOWNLOAD_FORM_TEXT"></span></p>
+			<input type="text" id="save_as" name="save_as" value="">
+			<input type="hidden" id="link" name="link" value="">
+		</div>
+	</body>
+</html>

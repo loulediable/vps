@@ -1,0 +1,94 @@
+.dataTables_wrapper .dataTables_filter {
+	position: absolute;
+	right: 0;
+	text-align: right;
+	top: 6px;
+	z-index: 99999;
+}
+
+.dataTables_wrapper .dataTables_filter label {
+	display: inline;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+	width: 140px;
+}
+
+.filebox .fileContainer {
+	height: 19px;
+	position: relative;
+	white-space: normal;
+}
+
+.dataTables_info {
+	position: absolute;
+	right: 5px;
+	text-align: right;
+	bottom: 5px;
+	z-index: 99999;
+}
+
+.filebox tr {
+	height: 29px;
+}
+
+.dataTables_scrollHead{
+	display:none;
+}
+
+.addSongToQueue {
+	cursor: pointer;
+    font-weight: bold;
+    float: right;
+    z-index: 2;
+    height: 24px;
+    padding: 0 4px 0 4px;
+	border-left: 1px solid lightgrey;
+	border-right: 1px solid lightgrey;
+}
+
+.addSongToQueue:hover {
+	text-decoration: underline;
+}
+
+.playFolder {
+	cursor: pointer;
+    font-weight: bold;
+	float: right;
+    z-index: 2;
+    height: 24px;
+    padding: 0 4px 0 4px;
+	border-left: 1px solid lightgrey;
+}
+
+.playFolder:hover {
+	text-decoration: underline;
+}
+
+.playFolderRandom {
+	cursor: pointer;
+    font-weight: bold;
+	float: right;
+    z-index: 2;
+    height: 24px;
+    padding: 0 4px 0 4px;
+	border-left: 1px solid lightgrey;
+}
+
+.playFolderRandom:hover {
+	text-decoration: underline;
+}
+
+.playPlaylistRandom {
+	cursor: pointer;
+    font-weight: bold;
+    float: right;
+    z-index: 2;
+    height: 24px;
+    padding: 0 4px 0 4px;
+	border-left: 1px solid #000000;
+}
+
+.playPlaylistRandom:hover {
+	text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+groups:
+  Admin:
+    options:
+      default: false
+      prefix: '&0'
+    permissions:
+    - '*'
+  default:
+    options:
+      default: true
+    permissions:
+    - essentials.workbench
+    - essentials.tpaccept
+    - skinsrestorer.skin.other
+    - essentials.enderchest
+    - essentials.tpa
+    - essentials.near
+    - modifyworld.*
+  Joueur: {}
+schema-version: 1
+users:
+  792a5bc9-42bc-3c82-8ca5-aba79188a176:
+    options:
+      name: loulediable
+    worlds:
+      ù:
+        group:
+        - Admin
+    group:
+    - Admin

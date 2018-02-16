@@ -1,0 +1,44 @@
+.rssFeed {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	width: 100%;
+	text-align: left;
+}
+
+.rssFeed a {
+	text-decoration: none;
+}
+
+.rssFeed a:hover {
+	text-decoration: none;
+}
+
+.rssBody {
+	border-bottom: 1px solid;
+	border-top: 1px solid;
+	left: 10px;
+	position: relative;
+	height: 80px !important;
+}
+.rssRow h4 {
+	font-weight: bold;
+	font-size: 14px;
+}
+.rssRow h4, .rssRow p, .rssRow div {
+	margin: 0;
+	padding: 2px;
+}
+
+.rssFeed img {
+	height: 55px;
+	float: left;
+	margin-right: 2px;
+}
+
+.rssFeed hr, .rssFeed br, .rssError {
+	display: none;
+}
+
+.youtubeBox img {
+	display: block;
+}

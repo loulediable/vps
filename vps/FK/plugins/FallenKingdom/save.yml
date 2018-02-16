@@ -1,0 +1,64 @@
+FkPI:
+  RulesManager:
+    Rules:
+      AllowedBlocks:
+      - TORCH
+      - REDSTONE_TORCH_ON
+      - FIRE
+      - WALL_SIGN
+      - SIGN_POST
+      - TNT
+      - WORKBENCH
+      - FURNACE
+      - ANVIL
+      - ENCHANTMENT_TABLE
+      FriendlyFire: false
+      PvpCap: 1
+      TntCap: 5
+      ChestLimit: 30
+      ChargedCreepers: 20015003
+      DoPauseAfterDay: false
+      EternalDay: false
+      TntJump: true
+      EndCap: 1
+      PlaceBlockInCave: false
+      NetherCap: 1
+      DeepPause: true
+      DeathLimit: 0
+  TeamManager:
+    noir:
+      Members: []
+      Base:
+        Center:
+          World: world
+          X: -159
+          Y: 93
+          Z: -336
+        Material: WOOL
+        Radius: 30
+    rouge:
+      Members: []
+      Base:
+        Center:
+          World: world
+          X: -312
+          Y: 103
+          Z: 324
+        Material: WOOL
+        Radius: 30
+    vert:
+      Members: []
+      Base:
+        Center:
+          World: world
+          X: 404
+          Y: 100
+          Z: 252
+        Material: WOOL
+        Radius: 30
+Game:
+  State: BEFORE_STARTING
+  Day: 0
+  Time: 23999
+  SbName: '&7[&5Fk&7] '
+PlayerManager: {}

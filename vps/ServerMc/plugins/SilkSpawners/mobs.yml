@@ -1,0 +1,751 @@
+# creatures: key is official creature type name (mobID), case-sensitive, from https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
+creatures:
+ 
+   # Vanilla mobs, from http://www.minecraftwiki.net/wiki/Data_values#Entity_IDs
+  Creeper:
+    aliases: &id001
+    - c
+    - creep
+    - cataclysm
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Creeper
+  Skeleton:
+    aliases: &id002
+    - s
+    - sk
+    - skelly
+    - skellington
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Skeleton
+  Spider:
+    aliases: &id003
+    - sp
+    - bug
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Spider
+  Giant:
+    aliases: &id004
+    - giantzombie
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Giant
+  Zombie:
+    aliases: &id005
+    - z
+    - zed
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Zombie
+  Slime:
+    aliases: &id006
+    - sl
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Slime
+  Ghast:
+    aliases: &id007
+    - g
+    - ghost
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Ghast
+  PigZombie:
+    aliases: &id008
+    - pigman
+    - zombiepigman
+    - pg
+    - zp
+    displayName: Zombie Pigman
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  Enderman:
+    aliases: &id009
+    - e
+    - ender
+    - endermen
+    - slenderman
+    - slender
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Enderman
+  CaveSpider:
+    aliases: &id010
+    - cspider
+    - cs
+    - bluespider
+    displayName: Cave Spider
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  Silverfish:
+    aliases: &id011
+    - sf
+    - sfish
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Silverfish
+  Blaze:
+    aliases: &id012
+    - bl
+    - b
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Blaze
+  LavaSlime:
+    aliases: &id013
+    - magmacube
+    - mcube
+    - magma
+    - m
+    - mc
+    displayName: Magma Cube
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  EnderDragon:
+    aliases: &id014
+    - dragon
+    - raqreqentba
+    displayName: Ender Dragon
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  Pig:
+    aliases: &id015
+    - p
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Pig
+  Sheep:
+    aliases: &id016
+    - sh
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Sheep
+  Cow:
+    aliases: &id017
+    - bovine
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Cow
+  Chicken:
+    aliases: &id018
+    - ch
+    - chick
+    - bird
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Chicken
+  Squid:
+    aliases: &id019
+    - sq
+    - octopus
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Squid
+  Wolf:
+    aliases: &id020
+    - w
+    - dog
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Wolf
+  MushroomCow:
+    aliases: &id021
+    - mc
+    - mcow
+    displayName: Mooshroom
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  SnowMan:
+    aliases: &id022
+    - golem
+    - sgolem
+    - sg
+    - sm
+    - snowmen
+    displayName: Snow Golem
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  Ozelot:
+    aliases: &id023
+    - ocelot
+    - oce
+    - o
+    - cat
+    - kitty
+    displayName: Ocelot
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  VillagerGolem:
+    aliases: &id024
+    - igolem
+    - ironman
+    - iron
+    - ig
+    displayName: Iron Golem
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  Villager:
+    aliases: &id025
+    - v
+    - npc
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Villager
+  Witch:
+    aliases: &id026
+    - hag
+    - sibly
+    - sorceress
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Witch
+  Bat:
+    aliases: &id027
+    - batman
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Bat
+  WitherBoss:
+    aliases: &id028
+    - wboss
+    displayName: Wither
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  EntityHorse:
+    aliases: &id029
+    - horse
+    - h
+    - bronco
+    - pony
+    displayName: Horse
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+  Rabbit:
+    aliases: &id030
+    - r
+    - rab
+    - bunny
+    - hare
+    - cony
+    - coney
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Rabbit
+  Endermite:
+    aliases: &id031
+    - mite
+    - acarid
+    - acarian
+    - acarine
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Endermite
+  Guardian:
+    aliases: &id032
+    - keeper
+    - guard
+    - watcher
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Guardian
+ 
+  # Non-mob vanilla entities
+  # Enable on your own risk, some might work, some not!
+  Item:
+    enable: false
+  XPOrb:
+    enable: false
+  Painting:
+    enable: false
+  Arrow:
+    enable: false
+  Snowball:
+    enable: false
+  Fireball:
+    enable: false
+  SmallFireball:
+    enable: false
+  ThrownEnderpearl:
+    enable: false
+  EyeOfEnderSignal:
+    enable: false
+  ThrownPotion:
+    enable: false
+  ThrownExpBottle:
+    enable: false
+  PrimedTnt:
+    enable: false
+  FallingSand:
+    enable: false
+  Boat:
+    enable: false
+  Mob:
+    enable: false
+  Monster:
+    enable: false
+  EnderCrystal:
+    enable: false
+  ItemFrame:
+    enable: false
+  WitherSkull:
+    enable: false
+  FireworksRocketEntity:
+    enable: false
+  MinecartRideable:
+    enable: false
+  MinecartChest:
+    enable: false
+  MinecartFurnace:
+    enable: false
+  MinecartTNT:
+    enable: false
+  MinecartHopper:
+    enable: false
+  MinecartSpawner:
+    enable: false
+  LeashKnot:
+    enable: false
+  MinecartCommandBlock:
+    enable: false
+  ArmorStand:
+    enable: false
+  ThrownEgg:
+    enable: false
+  creeper:
+    aliases: *id001
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Creeper
+  skeleton:
+    aliases: *id002
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Skeleton
+  spider:
+    aliases: *id003
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Spider
+  giant:
+    aliases: *id004
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Giant
+  zombie:
+    aliases: *id005
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Zombie
+  slime:
+    aliases: *id006
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Slime
+  ghast:
+    aliases: *id007
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Ghast
+  zombie_pigman:
+    aliases: *id008
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Zombie Pigman
+  enderman:
+    aliases: *id009
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Enderman
+  cave_spider:
+    aliases: *id010
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Cave Spider
+  silverfish:
+    aliases: *id011
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Silverfish
+  blaze:
+    aliases: *id012
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Blaze
+  magma_cube:
+    aliases: *id013
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Magma Cube
+  ender_dragon:
+    aliases: *id014
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Ender Dragon
+  pig:
+    aliases: *id015
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Pig
+  sheep:
+    aliases: *id016
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Sheep
+  cow:
+    aliases: *id017
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Cow
+  chicken:
+    aliases: *id018
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Chicken
+  squid:
+    aliases: *id019
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Squid
+  wolf:
+    aliases: *id020
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Wolf
+  mooshroom:
+    aliases: *id021
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Mooshroom
+  snowman:
+    aliases: *id022
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Snow Golem
+  ocelot:
+    aliases: *id023
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Ocelot
+  villager_golem:
+    aliases: *id024
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Iron Golem
+  villager:
+    aliases: *id025
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Villager
+  witch:
+    aliases: *id026
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Witch
+  bat:
+    aliases: *id027
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Bat
+  wither:
+    aliases: *id028
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Wither
+  horse:
+    aliases: *id029
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Horse
+  rabbit:
+    aliases: *id030
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Rabbit
+  endermite:
+    aliases: *id031
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Endermite
+  guardian:
+    aliases: *id032
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Guardian
+  Shulker:
+    aliases: &id033
+    - shulk
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Shulker
+  shulker:
+    aliases: *id033
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Shulker
+  PolarBear:
+    aliases: &id034
+    - bear
+    - polar
+    - ursus
+    - whitebear
+    - icebear
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Polar Bear
+  polar_bear:
+    aliases: *id034
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Polar Bear
+  elder_guardian:
+    aliases:
+    - elder
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Elder Guardian
+  wither_skeleton:
+    aliases:
+    - witherskeleton
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Wither Skeleton
+  stray:
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Stray
+  husk:
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Husk
+  zombie_villager:
+    aliases:
+    - zombievillager
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Zombie Villager
+  skeleton_horse:
+    aliases:
+    - skeletonhorse
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Skeleton Horse
+  zombie_horse:
+    aliases:
+    - zombiehorse
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Zombie Horse
+  donkey:
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Donkey
+  mule:
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Mule
+  evocation_illager:
+    aliases:
+    - evoker
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Evoker
+  vex:
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Vex
+  vindication_illager:
+    aliases:
+    - vindicator
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Vindicator
+  llama:
+    aliases:
+    - spitter
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Llama
+  illusion_illager:
+    aliases:
+    - illusioner
+    - illusion
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Illusioner
+  parrot:
+    aliases:
+    - macaw
+    - pirate_bird
+    - popinjay
+    enable: true
+    enableCraftingSpawner: true
+    enableSpawnEggOverride: true
+    displayName: Parrot
+  item:
+    enable: false
+  xp_orb:
+    enable: false
+  painting:
+    enable: false
+  arrow:
+    enable: false
+  snowball:
+    enable: false
+  fireball:
+    enable: false
+  small_fireball:
+    enable: false
+  enderpearl:
+    enable: false
+  eye_of_ender_signal:
+    enable: false
+  potion:
+    enable: false
+  xp_bottle:
+    enable: false
+  tnt:
+    enable: false
+  falling_block:
+    enable: false
+  boat:
+    enable: false
+  ender_crystal:
+    enable: false
+  item_frame:
+    enable: false
+  wither_skull:
+    enable: false
+  fireworks_rocket:
+    enable: false
+  minecart:
+    enable: false
+  chest_minecart:
+    enable: false
+  furnace_minecart:
+    enable: false
+  tnt_minecart:
+    enable: false
+  hopper_minecart:
+    enable: false
+  spawner_minecart:
+    enable: false
+  leash_know:
+    enable: false
+  commandblock_minecart:
+    enable: false
+  armor_stand:
+    enable: false
+  egg:
+    enable: false
+  AreaEffectCloud:
+    enable: false
+  area_effect_cloud:
+    enable: false
+  TippedArrow:
+    enable: false
+  tipped_arrow:
+    enable: false
+  SpectralArrow:
+    enable: false
+  spectral_arrow:
+    enable: false
+  ShulkerBullet:
+    enable: false
+  shulker_bullet:
+    enable: false
+  DragonFireball:
+    enable: false
+  dragon_fireball:
+    enable: false
+  llama_spit:
+    enable: false
+  evocation_fangs:
+    enable: false
+  ender_pearl:
+    enable: false
+  leash_knot:
+    enable: false

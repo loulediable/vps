@@ -1,0 +1,25 @@
+lastAccountName: loulediable
+timestamps:
+  login: 1518638254329
+  kits:
+    color: 1512080500061
+  logout: 1518639418729
+  lastteleport: 1513460820900
+ipAddress: 82.226.141.70
+logoutlocation:
+  world: FKrohan
+  x: 154.94952530431345
+  y: 120.03917566245799
+  z: -199.02523279793667
+  yaw: -180.41748
+  pitch: -3.2305233
+lastlocation:
+  world: survie
+  x: -576.2966370287188
+  y: 69.0
+  z: 719.8501067401884
+  yaw: 96.64834
+  pitch: 31.581997
+powertools: {}
+money: '500'
+godmode: false

@@ -1,0 +1,21 @@
+lastAccountName: Nutellasson
+timestamps:
+  login: 1513451887152
+  lastteleport: 1513381461895
+  logout: 1513453269910
+ipAddress: 92.130.181.78
+lastlocation:
+  world: survie_nether
+  x: -120.93251272417763
+  y: 72.0
+  z: -139.8447897185291
+  yaw: -85.94092
+  pitch: 51.15854
+godmode: false
+logoutlocation:
+  world: survie
+  x: -26.98264304289667
+  y: 63.0
+  z: 197.46973606132624
+  yaw: -50.671204
+  pitch: -14.555533

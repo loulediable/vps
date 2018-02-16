@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="imagetoolbar" content="no" />
+		<meta property="og:title" content="TS3MusicBot Webinterface" />
+		<meta property="og:description" content="A Teamspeak 3 music bot controlled with chat commands for Linux (vServer/RootServer) and Windows. Plays music/radio/youtube/robot voice and more ..." />
+		<meta property="og:image" content="http://www.ts3musicbot.net/images/icon.png" />
+        <title>TS3MusicBot Webinterface</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    </head>
+    <body>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.11&appId=332782323451490';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	<!-- BEFORE_CONTENT -->
+	<div id="wrapper">
+			<div id="header">
+                <div id="title">
+                    <h1>TS3MusicBot Webinterface</h1>
+                </div>
+				<div class="fb-like" data-href="https://www.facebook.com/ts3musicbot.net" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+            </div>
+            <div id="main">
+                <div id="content">
+                    <form action="login" id="loginForm" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                                <div class="row" style="width: 425px; position: relative; top: 170px;">
+									<p style="float: left; margin: 8px 10px 0 0">Password:</p>
+									<input type="password" name="password" value="" autofocus>
+									<a class="customButton" style="float: right; position: relative; top: 4px;" onclick="document.getElementById('loginForm').submit(); return;" href="#">Login</a>
+									<br>
+									<br>
+									<div style="font-width: bold;">
+										Administrator password: This login mode has full access to all functions and settings.<br>
+										User password: This login mode has no settings and permissions for functions can be limited by the administrator.
+									</div>
+                                </div>
+                                
+                            </form>
+                </div>
+            </div>
+            <div id="footer" style="position: absolute; bottom: 10px; right: 10px; top: auto;">
+                &copy; 2012-2018 &middot; <a href="http://ts3musicbot.net">TS3MusicBot.net</a>
+            </div>
+        </div>
+    </body>
+</html>
+
